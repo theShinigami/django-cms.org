@@ -1,0 +1,32 @@
+# Compile this file for changes to take effect:
+# pip-compile requirements.in >> requirements.txt
+
+boto3
+psycopg2
+uwsgi
+
+django<4
+dj-database-url
+django-storage-url
+whitenoise
+easy-thumbnails
+
+# key requirements for django CMS
+django-cms>=4.1.0rc3
+djangocms-versioning>=2.0.0rc1
+djangocms-alias>=2.0.0rc1
+
+# optional, but used in most projects
+djangocms-admin-style>=3.2.2
+
+# the default CKEditor - optional, but used in most projects
+djangocms-text-ckeditor>=5.1.2
+
+
+# optional django CMS frontend
+djangocms-frontend
+
+django-filer
+
+
+pip-tools  # needed for compilation of this file into requirements.txt, see start of file
