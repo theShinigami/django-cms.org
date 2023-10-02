@@ -79,6 +79,9 @@ INSTALLED_APPS = [
     'djangocms_frontend.contrib.tabs',
     'djangocms_frontend.contrib.utilities',
 
+    # Specific designs for this site
+    'cms_theme',
+
     # djangocms-blog-related stuff
     'djangocms_blog',
     'taggit',
@@ -228,3 +231,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 CMS_CONFIRM_VERSION4 = True
 DJANGOCMS_VERSIONING_ALLOW_DELETING_VERSIONS = True
+
+# Activate webp support
+THUMBNAIL_PRESERVE_EXTENSIONS = ('webp',)
+THUMBNAIL_TRANSPARENCY_EXTENSION = "webp"

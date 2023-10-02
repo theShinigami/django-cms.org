@@ -5,6 +5,7 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('autosuggest/', include('taggit_autosuggest.urls')),
 ]
 
 if settings.DEBUG:
