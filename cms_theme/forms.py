@@ -79,4 +79,5 @@ class FeatureForm(ResponsiveFormMixin, MarginFormMixin, EntangledModelForm):
     feature = forms.CharField(
         label=_("Feature"),
         required=True,
+        widget=forms.Textarea,
     )

@@ -40,6 +40,8 @@ class FeaturePlugin(ResponsiveMixin, MarginMixin, CMSUIPlugin):
     model = models.Feature
     form = forms.FeatureForm
 
+    allow_children = True
+
     render_template = "cms_theme/feature.html"
 
     fieldsets = [
