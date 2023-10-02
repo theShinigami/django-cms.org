@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.utils.functional import cached_property
 from django.utils.translation import gettext_lazy as _
 from djangocms_frontend.contrib.image.models import ImageMixin
@@ -23,8 +24,8 @@ class Person(ImageMixin, FrontendUIItem):
             return ""
 
         picture_options = self.get_size(
-            width=self.width or 0,
-            height=self.height or 0,
+            width=settings.FRONTEND_PORTRAIT_SIZE,
+            height=settings.FRONTEND_PORTRAIT_SIZE,
         )
 
         thumbnail_options = {
