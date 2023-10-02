@@ -43,3 +43,12 @@ class Person(ImageMixin, FrontendUIItem):
 
     def get_short_description(self):
         return self.config.get("name", "-")
+
+
+class Feature(FrontendUIItem):
+    class Meta:
+        proxy = True
+        verbose_name = _("Feature")
+
+    def get_short_description(self):
+        return self.config.get("feature", "-")

@@ -1,0 +1,11 @@
+{% load icon_tags %}{% add_css_for_icon instance.icon %}
+<div class="d-flex">
+  <div class="flex-shrink-0">
+      <div class="text-center" style="min-width: 140px">
+        <i class="{{ instance.icon.iconClass }}" style="font-size: 200%"></i>
+      </div>
+  </div>
+  <div class="flex-grow-1 ms-3">
+    <b>{{ instance.feature }}</b>
+  </div>
+</div>

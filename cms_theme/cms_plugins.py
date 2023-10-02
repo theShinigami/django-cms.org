@@ -6,6 +6,7 @@ from djangocms_frontend.common.spacing import MarginMixin
 
 from . import forms, models
 
+
 @plugin_pool.register_plugin
 class PersonPlugin(ResponsiveMixin, MarginMixin, CMSUIPlugin):
     name = _("Person")
@@ -31,3 +32,23 @@ class PersonPlugin(ResponsiveMixin, MarginMixin, CMSUIPlugin):
     def get_render_template(context, instance, placeholder):
         return f"cms_theme/person/{instance.template}/person.html"
 
+
+@plugin_pool.register_plugin
+class FeaturePlugin(ResponsiveMixin, MarginMixin, CMSUIPlugin):
+    name = _("Feature")
+
+    model = models.Feature
+    form = forms.FeatureForm
+
+    render_template = "cms_theme/feature.html"
+
+    fieldsets = [
+        (
+            None,
+            {
+                "fields": [
+                    ("icon", "feature"),
+                ]
+            },
+        ),
+    ]

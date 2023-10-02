@@ -5,24 +5,25 @@ import djangocms_frontend.contrib.image.models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
     dependencies = [
-        ('djangocms_frontend', '0001_initial'),
+        ("djangocms_frontend", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Person',
-            fields=[
-            ],
+            name="Person",
+            fields=[],
             options={
-                'verbose_name': 'Person',
-                'proxy': True,
-                'indexes': [],
-                'constraints': [],
+                "verbose_name": "Person",
+                "proxy": True,
+                "indexes": [],
+                "constraints": [],
             },
-            bases=(djangocms_frontend.contrib.image.models.ImageMixin, 'djangocms_frontend.frontenduiitem'),
+            bases=(
+                djangocms_frontend.contrib.image.models.ImageMixin,
+                "djangocms_frontend.frontenduiitem",
+            ),
         ),
     ]
