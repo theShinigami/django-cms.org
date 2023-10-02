@@ -20,13 +20,14 @@ class PersonPlugin(ResponsiveMixin, MarginMixin, CMSUIPlugin):
                 "fields": [
                     "picture",
                     "name",
-                    "role"
+                    "role",
+                    "template",
                 ]
             },
         ),
     ]
 
     @staticmethod
-    def get_render_template(self, context, instance, placeholder):
+    def get_render_template(context, instance, placeholder):
         return f"cms_theme/person/{instance.template}/person.html"
 
