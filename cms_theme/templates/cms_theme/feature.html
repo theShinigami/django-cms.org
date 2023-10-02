@@ -1,7 +1,7 @@
 {% load icon_tags cms_tags %}{% add_css_for_icon instance.icon %}
-<div class="d-flex">
+<div class="d-flex align-items-center">
   <div class="flex-shrink-0">
-      <div class="text-center" style="min-width: 140px">
+      <div class="text-center" style="min-width: 110px">
         {% for plugin in instance.child_plugin_instances %}
             {% with parentloop=forloop parent=instance %}{% render_plugin plugin %}{% endwith %}
         {% empty %}<i class="{{ instance.icon.iconClass }}" style="font-size: 200%"></i>{% endfor %}
