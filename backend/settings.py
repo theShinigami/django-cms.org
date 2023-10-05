@@ -244,6 +244,6 @@ if DEBUG:
         "debug_toolbar",
     )
     MIDDLEWARE.insert(  # NoQA F405
-        1,
+        2,
         "debug_toolbar.middleware.DebugToolbarMiddleware",
     )
