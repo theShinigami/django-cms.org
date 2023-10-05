@@ -236,14 +236,18 @@ DJANGOCMS_VERSIONING_ALLOW_DELETING_VERSIONS = True
 THUMBNAIL_PRESERVE_EXTENSIONS = ('webp',)
 THUMBNAIL_TRANSPARENCY_EXTENSION = "webp"
 
-# Design settings
-FRONTEND_PORTRAIT_SIZE = 140
-
+# For development: django-debug-toolbar
 if DEBUG:
     INSTALLED_APPS += (  # NoQA F405
         "debug_toolbar",
     )
     MIDDLEWARE.insert(  # NoQA F405
-        2,
+        0,
         "debug_toolbar.middleware.DebugToolbarMiddleware",
     )
+    INTERNAL_IPS = [
+        "127.0.0.1",
+    ]
+
+# Design settings
+FRONTEND_PORTRAIT_SIZE = 140

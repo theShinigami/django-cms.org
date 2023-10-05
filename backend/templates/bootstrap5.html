@@ -14,6 +14,11 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">{% block menubar %}{% show_menu 0 100 100 100 'menu/menu.html' %}{% endblock %}</ul>
+                <style>
+                    .navbar-nav .nav-item.dropdown:hover .dropdown-menu {
+                        display: block;
+                    }
+                </style>
                 {% block searchbar %}{% endblock %}
             </div>
         </div>
