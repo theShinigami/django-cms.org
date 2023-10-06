@@ -54,3 +54,29 @@ class FeaturePlugin(ResponsiveMixin, MarginMixin, CMSUIPlugin):
             },
         ),
     ]
+
+
+@plugin_pool.register_plugin
+class CaseStudyProfilePlugin(CMSUIPlugin):
+    name = _("Case study profile")
+
+    model = models.CaseStudyProfile
+    form = forms.CaseStudyProfileForm
+
+    render_template = "cms_theme/case_study_profile.html"
+
+    fieldsets = [
+        (
+            None,
+            {
+                "fields": [
+                    "client",
+                    "size",
+                    "location",
+                    "sector",
+                    "website",
+                    "source",
+                ]
+            },
+        ),
+    ]

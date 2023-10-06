@@ -7,6 +7,7 @@ from djangocms_frontend.common.spacing import MarginFormMixin
 from djangocms_frontend.contrib.icon.fields import IconPickerField
 from djangocms_frontend.helpers import first_choice
 from djangocms_frontend.models import FrontendUIItem
+from djangocms_text_ckeditor.fields import HTMLFormField
 from entangled.forms import EntangledModelForm
 from filer.fields.image import AdminImageFormField, FilerImageField
 from filer.models import Image
@@ -84,3 +85,50 @@ class FeatureForm(ResponsiveFormMixin, MarginFormMixin, EntangledModelForm):
         required=True,
         widget=forms.Textarea,
     )
+
+
+class CaseStudyProfileForm(EntangledModelForm):
+    class Meta:
+        model = FrontendUIItem
+        entangled_fields = {
+            "config": [
+                "client",
+                "size",
+                "location",
+                "sector",
+                "website",
+                "source",
+            ]
+        }
+
+    client = forms.CharField(
+        label=_("Client"),
+        required=True,
+    )
+
+    size = forms.CharField(
+        label=_("Size"),
+        required=False,
+    )
+
+    location = forms.CharField(
+        label=_("Location"),
+        required=False,
+    )
+
+    sector = forms.CharField(
+        label=_("Sector"),
+        required=False,
+    )
+
+    website = forms.URLField(
+        label=_("Website"),
+        required=False,
+    )
+
+    source = HTMLFormField(
+        label=_("Source"),
+        required=False,
+        help_text=_("Creator of the case study"),
+    )
+

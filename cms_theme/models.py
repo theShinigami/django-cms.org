@@ -52,3 +52,12 @@ class Feature(FrontendUIItem):
 
     def get_short_description(self):
         return self.config.get("feature", "-")
+
+
+class CaseStudyProfile(FrontendUIItem):
+    class Meta:
+        proxy = True
+        verbose_name = _("Case study profile")
+
+    def get_short_description(self):
+        return self.config.get("client", "-")
