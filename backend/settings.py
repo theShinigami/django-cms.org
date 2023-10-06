@@ -3,6 +3,7 @@ from pathlib import Path
 import os
 import dj_database_url
 from django.utils.log import DEFAULT_LOGGING
+from django.utils.translation import gettext_lazy as _
 from django_storage_url import dsn_configured_storage_class
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -259,3 +260,7 @@ if DEBUG:
 
 # Design settings
 FRONTEND_PORTRAIT_SIZE = 140
+BLOG_PLUGIN_TEMPLATE_FOLDERS = (
+    ("plugins", _("Default")),
+    ("cards", _("Cards")),
+)
