@@ -7,6 +7,9 @@ services:
     # map the internal port 80 to port 8000 on the host
     ports:
       - "8000:80"
+    environment:
+      PYTHONPATH: "/app"
+      DJANGO_SETTINGS_MODULE: "backend.settings"
     # map the host directory to app (which allows us to see and edit files inside the container)
     volumes:
       - ".:/app:rw"
@@ -23,7 +26,7 @@ services:
     # Select one of the following db configurations for the database
     image: postgres:13.5-alpine
     ports:
-      - "5432:5432/tcp"  # allow your local dev env to connect to the db
+      - "${DB_PORT:-5432}:5432/tcp"  # allow your local dev env to connect to the db
     environment:
       POSTGRES_DB: "db"
       POSTGRES_PASSWORD: "password"
@@ -35,6 +38,8 @@ services:
 
     volumes:
       - ".:/app:rw"
+
+    env_file: .env-local
 
 networks:
   djangocmsnet:
