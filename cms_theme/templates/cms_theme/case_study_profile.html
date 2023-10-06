@@ -15,6 +15,10 @@
             <h5>{% translate "Sector" %}</h5>
             <p>{{ instance.sector }}</p>
         {% endif %}
+        {% if instance.launch %}
+            <h5>{% translate "Year of launch" %}</h5>
+            <p>{{ instance.launch }}</p>
+        {% endif %}
         {% if instance.website %}
             <a class="btn btn-primary" href="{{ instance.website }}">{% translate "Visit website" %}</a>
         {% endif %}

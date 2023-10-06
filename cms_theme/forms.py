@@ -96,6 +96,7 @@ class CaseStudyProfileForm(EntangledModelForm):
                 "size",
                 "location",
                 "sector",
+                "launch",
                 "website",
                 "source",
             ]
@@ -118,6 +119,11 @@ class CaseStudyProfileForm(EntangledModelForm):
 
     sector = forms.CharField(
         label=_("Sector"),
+        required=False,
+    )
+
+    launch = forms.IntegerField(
+        label=_("Year of launch"),
         required=False,
     )
 
