@@ -1,9 +1,9 @@
 {% load i18n %}{% spaceless %}
 <div class="plugin plugin-blog">
     <div class="blog-latest-entries row row-cols-1 row-cols-md-2 row-cols-lg-3">
-    {% for postcontent in postcontent_list %}
+    {% for post_content in postcontent_list %}
         <div class="col mb-3">
-            {% include "djangocms_blog/cards/includes/blog_item.html" with postcontent=postcontent image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
+            {% include "djangocms_blog/cards/includes/blog_item.html" with post_content=postcontent image="true" TRUNCWORDS_COUNT=TRUNCWORDS_COUNT %}
         </div>
     {% endfor %}
     </div>
