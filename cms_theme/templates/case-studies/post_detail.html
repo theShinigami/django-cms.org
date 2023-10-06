@@ -19,9 +19,9 @@
                 <div class="blog-visual">
                     {% thumbnail post_content.post.main_image post_content.post.full_image_options.size crop=post_content.post.full_image_options.crop upscale=post_content.post.full_image_options.upscale subject_location=post_content.post.main_image.subject_location as main_image %}
                     {% if main_image %}
-                        <img src="{{ main_image.url }}" alt="{{ post_content.post.main_image.default_alt_text|default:'' }}" class="img-fluid" />
+                        <img src="{{ main_image.url }}" alt="{{ post_content.post.main_image.default_alt_text|default:'' }}" class="img-fluid mb-3" />
                     {% else %}
-                        <img src="{{ post_content.post.main_image.url }}" alt="{{ post_content.post.main_image.default_alt_text|default:'' }}" />
+                        <img src="{{ post_content.post.main_image.url }}" alt="{{ post_content.post.main_image.default_alt_text|default:'' }}" class="img-fluid mb-3" />
                     {% endif %}
                 </div>
             {% endif %}{% endspaceless %}
@@ -30,7 +30,7 @@
                     {% if post_content.abstract %}<div class="lead">{% render_model post_content "abstract" %}</div>{% endif %}
                     {% render_placeholder post_content.content %}
                 </div>
-                <div class="blog-sidebar col-12 col-lg-3">{% render_object_placeholder "sidebar" post_content %}</div>
+                <div class="blog-sidebar col-12 col-lg-3">{% render_content_placeholder "sidebar" post_content %}</div>
             </div>
         </article>
     </div>
