@@ -39,5 +39,7 @@ services:
     volumes:
       - ".:/app:rw"
 
+    env_file: .env-local
+
 networks:
   djangocmsnet:
