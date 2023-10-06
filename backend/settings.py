@@ -1,3 +1,4 @@
+from copy import deepcopy
 from pathlib import Path
 import os
 import dj_database_url
@@ -252,8 +253,9 @@ if DEBUG:
     ADMINS = [
         ("Fabian", "fsbraun@gmx.de"),
     ]
-    LOGGING = DEFAULT_LOGGING
+    LOGGING = deepcopy(DEFAULT_LOGGING)
     LOGGING["handlers"]["mail_admins"]["include_html"] = True
+    LOGGING["handlers"]["mail_admins"]["filters"] = []
 
 # Design settings
 FRONTEND_PORTRAIT_SIZE = 140
