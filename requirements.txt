@@ -60,6 +60,7 @@ django-cms==4.1.0rc4
     #   djangocms-frontend
     #   djangocms-text-ckeditor
     #   djangocms-versioning
+    #   djangocms-video
 django-debug-toolbar==4.2.0
     # via -r requirements.in
 django-entangled==0.5.4
@@ -69,6 +70,7 @@ django-filer==3.1.0
     #   -r requirements.in
     #   djangocms-blog
     #   djangocms-frontend
+    #   djangocms-video
 django-formtools==2.4.1
     # via django-cms
 django-fsm==2.8.1
@@ -111,7 +113,9 @@ djangocms-admin-style==3.2.6
 djangocms-alias==2.0.0rc2
     # via -r requirements.in
 djangocms-attributes-field==3.0.0
-    # via djangocms-frontend
+    # via
+    #   djangocms-frontend
+    #   djangocms-video
 djangocms-blog @ git+https://github.com/fsbraun/djangocms-blog@develop-4
     # via -r requirements.in
 djangocms-frontend @ git+https://github.com/django-cms/djangocms-frontend@master
@@ -122,6 +126,8 @@ djangocms-text-ckeditor==5.1.4
     #   djangocms-blog
     #   djangocms-frontend
 djangocms-versioning==2.0.0rc1
+    # via -r requirements.in
+djangocms-video==3.0.0
     # via -r requirements.in
 easy-thumbnails[svg]==2.8.5
     # via

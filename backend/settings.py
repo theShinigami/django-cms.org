@@ -84,7 +84,8 @@ INSTALLED_APPS = [
 
     # Specific designs for this site
     'cms_theme',
-
+    'djangocms_video',
+    
     # djangocms-blog-related stuff
     'djangocms_blog',
     'taggit',
