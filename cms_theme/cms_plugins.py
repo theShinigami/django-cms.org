@@ -131,7 +131,7 @@ class PromoCardPlugin(LayoutMixin, MarginMixin, LinkPluginMixin, CMSUIPlugin):
 
     allow_children = True
 
-    layout_tuple = ("Promo", "Promo")
+    layout_tuple = ("promo", "promo")
 
     fieldsets = [
         (
