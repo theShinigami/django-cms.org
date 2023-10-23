@@ -61,3 +61,12 @@ class CaseStudyProfile(FrontendUIItem):
 
     def get_short_description(self):
         return self.config.get("client", "-")
+
+
+class PromoCard(FrontendUIItem):
+    class Meta:
+        proxy = True
+        verbose_name = _("Promo card")
+
+    def get_short_description(self):
+        return self.config.get("title", "-")

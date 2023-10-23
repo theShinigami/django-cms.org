@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from djangocms_frontend.common.responsive import ResponsiveFormMixin
 from djangocms_frontend.common.spacing import MarginFormMixin
 from djangocms_frontend.contrib.icon.fields import IconPickerField
+from djangocms_frontend.contrib.link.forms import AbstractLinkForm
 from djangocms_frontend.helpers import first_choice
 from djangocms_frontend.models import FrontendUIItem
 from djangocms_text_ckeditor.fields import HTMLFormField
@@ -12,17 +13,7 @@ from entangled.forms import EntangledModelForm
 from filer.fields.image import AdminImageFormField, FilerImageField
 from filer.models import Image
 
-
-def get_templates(settings_name):
-    """Add additional choices through the ``settings.py``."""
-    choices = getattr(
-        django_settings,
-        settings_name,
-        [
-            ("default", _("Default")),
-        ],
-    )
-    return choices
+from . import conf
 
 
 class PersonForm(
@@ -42,9 +33,9 @@ class PersonForm(
         }
 
     template = forms.ChoiceField(
-        label=_("Template"),
-        choices=get_templates("PERSON_TEMPLATES"),
-        initial=first_choice(get_templates("PERSON_TEMPLATES")),
+        label=_("Layout"),
+        choices=conf.PERSON_LAYOUTS,
+        initial=first_choice(conf.PERSON_LAYOUTS),
     )
 
     picture = AdminImageFormField(
@@ -73,6 +64,7 @@ class FeatureForm(ResponsiveFormMixin, MarginFormMixin, EntangledModelForm):
             "config": [
                 "icon",
                 "feature",
+                "template",
             ]
         }
 
@@ -84,6 +76,11 @@ class FeatureForm(ResponsiveFormMixin, MarginFormMixin, EntangledModelForm):
         label=_("Feature"),
         required=True,
         widget=forms.Textarea,
+    )
+    template = forms.ChoiceField(
+        label=_("Layout"),
+        choices=conf.FEATURE_LAYOUTS,
+        initial=first_choice(conf.FEATURE_LAYOUTS),
     )
 
 
@@ -99,6 +96,7 @@ class CaseStudyProfileForm(EntangledModelForm):
                 "launch",
                 "website",
                 "source",
+                "template",
             ]
         }
 
@@ -106,35 +104,123 @@ class CaseStudyProfileForm(EntangledModelForm):
         label=_("Client"),
         required=True,
     )
-
     size = forms.CharField(
         label=_("Size"),
         required=False,
     )
-
     location = forms.CharField(
         label=_("Location"),
         required=False,
     )
-
     sector = forms.CharField(
         label=_("Sector"),
         required=False,
     )
-
     launch = forms.IntegerField(
         label=_("Year of launch"),
         required=False,
     )
-
     website = forms.URLField(
         label=_("Website"),
         required=False,
     )
-
     source = HTMLFormField(
         label=_("Source"),
         required=False,
         help_text=_("Creator of the case study"),
     )
+    template = forms.ChoiceField(
+        label=_("Layout"),
+        choices=conf.CASE_STUDY_LAYOUTS,
+        initial=first_choice(conf.CASE_STUDY_LAYOUTS),
+    )
 
+
+class CaseStudyProfileForm(EntangledModelForm):
+    class Meta:
+        model = FrontendUIItem
+        entangled_fields = {
+            "config": [
+                "client",
+                "size",
+                "location",
+                "sector",
+                "launch",
+                "website",
+                "source",
+                "template",
+            ]
+        }
+
+    client = forms.CharField(
+        label=_("Client"),
+        required=True,
+    )
+    size = forms.CharField(
+        label=_("Size"),
+        required=False,
+    )
+    location = forms.CharField(
+        label=_("Location"),
+        required=False,
+    )
+    sector = forms.CharField(
+        label=_("Sector"),
+        required=False,
+    )
+    launch = forms.IntegerField(
+        label=_("Year of launch"),
+        required=False,
+    )
+    website = forms.URLField(
+        label=_("Website"),
+        required=False,
+    )
+    source = HTMLFormField(
+        label=_("Source"),
+        required=False,
+        help_text=_("Creator of the case study"),
+    )
+    template = forms.ChoiceField(
+        label=_("Layout"),
+        choices=conf.CASE_STUDY_LAYOUTS,
+        initial=first_choice(conf.CASE_STUDY_LAYOUTS),
+    )
+
+
+class PromoCardForm(
+    ResponsiveFormMixin,
+    MarginFormMixin,
+    AbstractLinkForm,
+):
+    class Meta:
+        model = FrontendUIItem
+        entangled_fields = {
+            "config": [
+                "template",
+                "title",
+                "subtitle",
+                "icon",
+            ],
+        }
+
+    link_is_optional = True
+
+    template = forms.ChoiceField(
+        label=_("Layout"),
+        choices=conf.PERSON_LAYOUTS,
+        initial=first_choice(conf.PERSON_LAYOUTS),
+    )
+
+    icon = IconPickerField(
+        label=_("Icon"),
+        required=False,
+    )
+    title = forms.CharField(
+        label=_("Title"),
+        required=True,
+    )
+    subtitle = forms.CharField(
+        label=_("Subtitle"),
+        required=False,
+    )
