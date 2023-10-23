@@ -83,7 +83,7 @@ class CaseStudyProfilePlugin(LayoutMixin, CMSUIPlugin):
     model = models.CaseStudyProfile
     form = forms.CaseStudyProfileForm
 
-    layout_tuple = ("case_study", "case_study")
+    layout_tuple = ("case_study", "case_study_profile")
 
     fieldsets = [
         (
