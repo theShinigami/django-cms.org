@@ -7,11 +7,38 @@ from easy_thumbnails.files import get_thumbnailer
 
 
 # Create your models here.
+class SquareThumbnailMixin:
+    THUMBNAIL_SIZE = 140
+
+    @cached_property
+    def img_src(self):
+        # image can be empty, for example when the image is removed from filer
+        # in this case we want to return an empty string to avoid #69
+        if not hasattr(self, self.image_field):
+            return ""
+
+        thumbnail_options = {
+            "size": (self.THUMBNAIL_SIZE, self.THUMBNAIL_SIZE),
+            "crop": True,
+            "upscale": True,
+            "subject_location": self.rel_image.subject_location
+            if self.rel_image
+            else (),
+        }
+
+        try:
+            thumbnailer = get_thumbnailer(self.rel_image)
+            url = thumbnailer.get_thumbnail(thumbnail_options).url
+        except ValueError:
+            # get_thumbnailer() raises this if it can't establish a `relative_name`.
+            # This may mean that the filer image has been deleted
+            url = ""
+        return url
 
 
-class Person(ImageMixin, FrontendUIItem):
+class Person(ImageMixin, SquareThumbnailMixin, FrontendUIItem):
     image_field = "picture"
-    FRONTEND_PORTRAIT_SIZE = 140
+    THUMBNAIL_SIZE = 140
 
     class Meta:
         proxy = True
@@ -64,12 +91,13 @@ class CaseStudyProfile(FrontendUIItem):
         return self.config.get("client", "-")
 
 
-class PromoCard(ImageMixin, FrontendUIItem):
+class PromoCard(ImageMixin, SquareThumbnailMixin, FrontendUIItem):
     class Meta:
         proxy = True
         verbose_name = _("Promo card")
 
     image_field = "image"
+    THUMBNAIL_SIZE = 240
 
     def get_short_description(self):
         return self.config.get("title", "-")
