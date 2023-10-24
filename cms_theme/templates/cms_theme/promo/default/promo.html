@@ -1,7 +1,7 @@
 {% load cms_tags icon_tags %}{% add_css_for_icon instance.icon %}<{{ instance.tag_type }}{{ instance.get_attributes }}>
     <div class="card border border-0">
       {% if instance.image %}
-          <img class="card-img-top mx-auto" src="{{ instance.img_src }}"
+          <img class="card-img-top mx-auto mb-3" src="{{ instance.img_src }}"
                width="{{ instance.img_width|floatformat:"0" }}"
                height="{{ instance.img_height|floatformat:"0" }}"
                style="width: {{ instance.img_width|floatformat:"0" }}px;" />
