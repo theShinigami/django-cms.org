@@ -29,7 +29,7 @@ djangocms-video
 django-filer
 
 # djangocms-blog for v4
-djangocms-stories
+git+https://github.com/django-cms/djangocms-stories
 
 
 pip-tools  # needed for compilation of this file into requirements.txt, see start of file
