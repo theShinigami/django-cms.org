@@ -89,6 +89,7 @@ INSTALLED_APPS = [
     'djangocms_video',
 
     # djangocms-blog-related stuff
+    'djangocms_stories',
     'djangocms_blog',
     'taggit',
     'taggit_autosuggest',
