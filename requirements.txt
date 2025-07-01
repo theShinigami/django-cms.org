@@ -116,7 +116,7 @@ djangocms-frontend @ git+https://github.com/django-cms/djangocms-frontend@master
     # via -r requirements.in
 djangocms-link==5.0.1
     # via djangocms-frontend
-djangocms-stories==0.5.0
+djangocms-stories==0.6.1
     # via -r requirements.in
 djangocms-text==0.9.1
     # via -r requirements.in
@@ -151,7 +151,7 @@ packaging==25.0
     #   django-cms
     #   djangocms-text
     #   djangocms-versioning
-pillow==11.2.1
+pillow==11.3.0
     # via
     #   djangocms-text
     #   easy-thumbnails
