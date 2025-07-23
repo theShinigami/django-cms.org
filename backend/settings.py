@@ -90,7 +90,6 @@ INSTALLED_APPS = [
 
     # djangocms-blog-related stuff
     'djangocms_stories',
-    'djangocms_blog',
     'taggit',
     'taggit_autosuggest',
     'meta',
