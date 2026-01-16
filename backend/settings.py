@@ -81,8 +81,10 @@ INSTALLED_APPS = [
     "djangocms_frontend.contrib.utilities",
     "djangocms_link",
     # Specific designs for this site
-    "cms_theme",
-    "djangocms_video",
+    'cms_theme',
+    'djangocms_video',
+    'djangocms_ecosystem',
+
     # djangocms-stories-related stuff
     "djangocms_stories",
     "taggit",
