@@ -50,7 +50,7 @@ class Features(CMSFrontendComponent):
         required=False,
         initial=False,
     )
-  
+
     mirror_layout = forms.BooleanField(
         label=_("Mirror layout"),
         required=False,
@@ -91,7 +91,7 @@ class TimelineContainer(CMSFrontendComponent):
             "Spacing",
             "Attributes",
         ]
-        
+
     divider_color = forms.ChoiceField(
         label=_("Divider line color"),
         choices=settings.DJANGOCMS_FRONTEND_COLOR_STYLE_CHOICES,
@@ -108,4 +108,44 @@ class TimelineContainer(CMSFrontendComponent):
         initial="secondary",
         help_text=_("Color of the timeline circles."),
         widget=ColoredButtonGroup(attrs={"class": "flex-wrap"}),
+    )
+
+@components.register
+class LogoCarousel(CMSFrontendComponent):
+    """LogoCarousel component"""
+
+    class Meta:
+        name = _("Logo Carousel")
+        render_template = "carousel/logo_carousel.html"
+        allow_children = True
+        child_classes = [
+                "CarouselItemPlugin",
+        ]
+        mixins = ["Background", "Spacing", "Attributes"]
+
+
+    title = forms.CharField(
+            label=_("Title"),
+            required=False,
+    )
+
+    loop = forms.BooleanField(
+            label=_("Loop Carousel"),
+            required=False,
+            initial=False,
+    )
+    space_between_slides = forms.IntegerField(
+            label=_("Space Between Slides"),
+            required=False,
+            initial=20,
+    )
+    autoplay = forms.BooleanField(
+            label=_("AutoPlay"),
+            required=False,
+            initial=True,
+    )
+    delay = forms.IntegerField(
+            label=_("Autoplay delay"),
+            required=False,
+            initial=3000,
     )
