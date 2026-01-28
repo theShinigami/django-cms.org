@@ -3,6 +3,8 @@ from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 from djangocms_frontend.component_base import CMSFrontendComponent
 from djangocms_frontend.component_pool import components
+from djangocms_frontend.fields import HTMLFormField
+
 from djangocms_frontend.fields import ColoredButtonGroup
 
 
@@ -71,6 +73,7 @@ class Features(CMSFrontendComponent):
         ],
         required=False,
         initial="default",
+    )
 
 @components.register
 class TimelineContainer(CMSFrontendComponent):
