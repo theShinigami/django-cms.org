@@ -29,15 +29,19 @@ class Hero(CMSFrontendComponent):
         initial=False,
     )
 
+
 @components.register
-class CTAPanel(CMSFrontendComponent):
-    """CTAPanel component with background grid option"""
+class Features(CMSFrontendComponent):
+    """Features section container with accordion and content area"""
 
     class Meta:
-        name = _("CTA Panel")
-        render_template = "cta/cta_panel.html"
+        plugin_name = _("Features")
+        render_template = "features/features.html"
         allow_children = True
         child_classes = [
+            "TextPlugin",
+            "HeadingPlugin",
+            "AccordionPlugin",
             "TextLinkPlugin",
         ]
         mixins = ["Background", "Spacing", "Attributes"]
@@ -48,24 +52,24 @@ class CTAPanel(CMSFrontendComponent):
         initial=False,
     )
 
-    eyebrow_text = forms.CharField(
-        label=_("Eyebrow text"),
+    mirror_layout = forms.BooleanField(
+        label=_("Mirror layout"),
         required=False,
+        initial=False,
+        help_text=_(
+            "Enable to display images on the left and the accordion on the right."
+        ),
     )
 
-    main_heading = HTMLFormField(
-        label=_("Main heading"),
-        required=False,
-    )
-
-    content_alignment = forms.ChoiceField(
-        label=_("Content alignment"),
+    accordion_header_color = forms.ChoiceField(
+        label=_("Accordion header text color"),
         choices=[
-            ("start", _("Start")),
-            ("center", _("Center (Default)")),
-            ("end", _("End"))
+            ("default", _("Default (Black)")),
+            ("primary", _("Primary")),
+            ("secondary", _("Secondary")),
+            ("white", _("White")),
+            ("muted", _("Muted")),
         ],
-        initial="center",
-        help_text=_("Controls horizontal alignment of all content")
+        required=False,
+        initial="default",
     )
-
