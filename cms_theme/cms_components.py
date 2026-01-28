@@ -71,6 +71,7 @@ class Features(CMSFrontendComponent):
         ],
         required=False,
         initial="default",
+    )
 
 @components.register
 class TimelineContainer(CMSFrontendComponent):
@@ -151,4 +152,20 @@ class LogoCarousel(CMSFrontendComponent):
         label=_("Autoplay delay"),
         required=False,
         initial=3000,
+    )
+
+    text_color = forms.ChoiceField(
+        label=_("Text Color"),
+        choices=settings.DJANGOCMS_FRONTEND_COLOR_STYLE_CHOICES,
+        required=False,
+        initial="primary",
+        widget=ColoredButtonGroup(attrs={"class": "flex-wrap"}),
+    )
+
+    btn_color = forms.ChoiceField(
+        label=_("Button Color"),
+        choices=settings.DJANGOCMS_FRONTEND_COLOR_STYLE_CHOICES,
+        required=False,
+        initial="primary",
+        widget=ColoredButtonGroup(attrs={"class": "flex-wrap"}),
     )
