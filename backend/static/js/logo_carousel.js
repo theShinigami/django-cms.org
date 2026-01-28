@@ -16,6 +16,10 @@
 		try {
 			const swiperElements = document.querySelectorAll('.swiper');
 
+			if (swiperElements.length === 0) {
+				return;
+			}
+
 			swiperElements.forEach(elem => {
 				const loop = (elem.dataset.loop) === 'true';
 				const spaceBetweenSlides = parseInt(elem.dataset.spaceBetweenSlides) || 20;
