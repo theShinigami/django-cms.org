@@ -256,7 +256,7 @@ class BenefitsCard(CMSFrontendComponent):
         ]
         mixins = ["Background", "Spacing", "Attributes"]
 
-    title = forms.CharField(
+    card_title = forms.CharField(
         label=_("Card title"),
         required=False,
     )
@@ -266,7 +266,7 @@ class BenefitsCard(CMSFrontendComponent):
         required=False,
     )
 
-    icon = IconPickerField(
+    card_icon = IconPickerField(
         label=_("Icon"),
         required=False,
     )
