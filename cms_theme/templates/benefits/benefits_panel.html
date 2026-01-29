@@ -1,6 +1,6 @@
 <!-- cms_theme/templates/benefits/benefits_panel.html -->
 {% load static cms_tags frontend %}
-<div class="{{ instance.get_classes }} text-black">
+<div class="{{ instance.get_classes }} text-black" {{ instance.get_attributes }}>
     <div class="container-fluid p-5">
         <div class="mb-5">
             {% if instance.eyebrow_text %}
