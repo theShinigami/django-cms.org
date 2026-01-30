@@ -4,8 +4,8 @@ from django.core.validators import MinValueValidator
 from django.utils.translation import gettext_lazy as _
 from djangocms_frontend.component_base import CMSFrontendComponent
 from djangocms_frontend.component_pool import components
-from djangocms_frontend.fields import ColoredButtonGroup, HTMLFormField
 from djangocms_frontend.contrib.icon.fields import IconPickerField
+from djangocms_frontend.fields import ColoredButtonGroup, HTMLFormField
 
 
 @components.register
@@ -275,27 +275,26 @@ class LogoCarousel(CMSFrontendComponent):
         help_text=_("Color for the carousel button."),
     )
 
-   
+
 @components.register
 class BenefitsPanel(CMSFrontendComponent):
     """Benefits panel component"""
+
     class Meta:
         name = _("Benefits Panel")
         render_template = "benefits/benefits_panel.html"
         allow_children = True
         child_classes = [
             "BenefitsCardPlugin",
+            "TextPlugin",
+            "HeadingPlugin",
         ]
         mixins = ["Background", "Spacing", "Attributes"]
 
-    eyebrow_text = forms.CharField(
-        label=_("Eyebrow text"),
+    background_grid = forms.BooleanField(
+        label=_("Show background grid"),
         required=False,
-    )
-
-    heading_text = forms.CharField(
-        label=_("Heading text"),
-        required=False,
+        initial=False,
     )
 
 
@@ -307,13 +306,19 @@ class BenefitsCard(CMSFrontendComponent):
         name = _("Benefits Card")
         render_template = "benefits/benefits_card.html"
         allow_children = True
-        parent_classes = [
-            "BenefitsPanelPlugin"
-        ]
+        parent_classes = ["BenefitsPanelPlugin"]
         child_classes = [
             "TextLinkPlugin",
         ]
         mixins = ["Background", "Spacing", "Attributes"]
+
+    text_color = forms.ChoiceField(
+        label=_("Text color"),
+        choices=settings.DJANGOCMS_FRONTEND_COLOR_STYLE_CHOICES,
+        required=False,
+        initial="default",
+        widget=ColoredButtonGroup(attrs={"class": "flex-wrap"}),
+    )
 
     card_title = forms.CharField(
         label=_("Card title"),
@@ -329,4 +334,3 @@ class BenefitsCard(CMSFrontendComponent):
         label=_("Icon"),
         required=False,
     )
-    

@@ -1,17 +1,20 @@
 <!-- cms_theme/templates/benefits/benefits_panel.html -->
 {% load static cms_tags frontend %}
-<div class="{{ instance.get_classes }} text-black" {{ instance.get_attributes }}>
-    <div class="container-fluid p-5">
-        <div class="mb-5">
-            {% if instance.eyebrow_text %}
-                <p class="text-uppercase small ls-widest opacity-50 mb-1">{{ instance.eyebrow_text }}</p>
-            {% endif %}
-            {% if instance.heading_text %}<h2 class="display-6 fw-bold">{{ instance.heading_text }}</h2>{% endif %}
-        </div>
-        <div class="row g-4 justify-content-center">
-            {% if instance.child_plugin_instances %}
-                {% childplugins %}{% endchildplugins %}
-            {% endif %}
-        </div>
+<div {% if instance.background_grid %}class="{{ instance.get_classes }}  background-grid"{% endif %} {{ instance.get_attributes }}>
+    <div class="container">
+       {% with plugins=instance.child_plugin_instances %}
+            {% for plugin in plugins %}
+                {% if plugin.plugin_type != 'BenefitsCardPlugin' %}
+                    {% render_plugin plugin %}
+                {% endif %}
+            {% endfor %}
+            <div class="row g-4 justify-content-center">
+                {% for plugin in plugins %}
+                    {% if plugin.plugin_type == 'BenefitsCardPlugin' %}
+                        {% render_plugin plugin %}
+                    {% endif %}
+                {% endfor %}
+            </div>
+       {% endwith %}
     </div>
 </div>
